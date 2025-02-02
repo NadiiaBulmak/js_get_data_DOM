@@ -7,14 +7,18 @@ for (const pop of population) {
   totalPopulation += +pop.textContent.split(',').join('');
 }
 
-const average = totalPopulation / population.length;
+let average = 0;
 
-function changeData() {
-  document.querySelector('.total-population').textContent =
-    `${totalPopulation.toLocaleString()}`;
-
-  document.querySelector('.average-population').textContent =
-    `${average.toLocaleString()}`;
+if (population.length !== 0) {
+  average = totalPopulation / population.length;
 }
 
-changeData();
+function changeData(total, averagePopulation) {
+  document.querySelector('.total-population').textContent =
+    `${total.toLocaleString()}`;
+
+  document.querySelector('.average-population').textContent =
+    `${averagePopulation.toLocaleString()}`;
+}
+
+changeData(totalPopulation, average);
